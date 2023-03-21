@@ -11,7 +11,7 @@ int main(int argc, char **argv)
 	MYSQL_ROW row;
 	int numpartida;
 	char color[10];
-	char consulta[100];
+	char consulta[200];
 	
 	//Creamos una conexion al servidor MYSQL 
 	conn = mysql_init(NULL);
@@ -30,8 +30,8 @@ int main(int argc, char **argv)
 	}
 	
 	
-	char consulta [80];
-	strcpy (consulta,"SELECT Participaciones.color FROM Jugadores, Participaciones WHERE Jugadores.nombre = 'Juan' AND Jugadores.id = Participaciones.idJ AND Participaciones.idP = 3");
+	
+	strcpy (consulta,"SELECT Participaciones.color FROM Jugadores, Participaciones WHERE Jugadores.nombre = 'Roberta' AND Jugadores.id = Participaciones.idJ AND Participaciones.idP = 3");
 	
 	err=mysql_query (conn, consulta);
 	if (err!=0) {
@@ -40,6 +40,7 @@ int main(int argc, char **argv)
 		exit (1);
 	}
 	
+	resultado = mysql_store_result(conn);
 	row = mysql_fetch_row (resultado);
 	
 	
